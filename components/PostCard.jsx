@@ -2,7 +2,10 @@ import React from 'react'
 
 function PostCard() {
   return (
-    <div>PostCard</div>
+    <div>
+      {post.title}
+      {post.excerpt}
+    </div>
   )
 }
 
