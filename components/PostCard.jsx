@@ -1,6 +1,6 @@
 import React from 'react'
 
-function PostCard() {
+function PostCard({post}) {
   return (
     <div>
       {post.title}
