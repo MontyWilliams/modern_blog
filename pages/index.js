@@ -3,12 +3,9 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { PostCard, Categories, PostWidget } from '../components/index.js'
 
-const Home = () => {
+const Home = ({posts}) => {
 
-  const  posts = [
-    { title: 'React Testing', excerpt: 'Learn This shit ' },
-    { title: 'Tailwind Testing', excerpt: 'Learn Some mo of This shit ' },
-  ];
+ 
 
   return (
     <div className="container mx-auto px-10 mb-8 ">
@@ -34,7 +31,7 @@ const Home = () => {
 export async function getStaticProps() {
   const posts = (await getPosts()) || [];
   return {
-    posts: { posts }
+    props: { posts }
   }
 }
 
