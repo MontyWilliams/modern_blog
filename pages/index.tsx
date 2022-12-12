@@ -10,7 +10,7 @@ const Home: NextPage = () => {
   ];
 
   return (
-    <div className="container mx-auto px-10 mb-8 bg-slate-100">
+    <div className="container mx-auto px-10 mb-8 ">
       <Head>
         <title>918 DCX Blog</title>
         <link rel="icon" href="/favicon.ico" />
