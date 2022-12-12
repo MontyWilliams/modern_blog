@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-
+import { PostCard, Categories, PostWidget} from '../components/index.js'
 const Home: NextPage = () => {
 
   const  posts = [
@@ -17,10 +17,7 @@ const Home: NextPage = () => {
       </Head>
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
         {posts.map((post, index) => (
-          <div>
-            {post.title}
-            {post.excerpt}
-          </div>
+          <PostCard  post={post}/>
         ))}
       </div>
           <div className="lg:col-span col-span-1">
