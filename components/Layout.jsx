@@ -1,9 +1,17 @@
 import React from 'react'
 import { Header } from './';
 
-function Layout() {
+<Layout>
+    yooooooo
+</Layout>
+
+
+function Layout({children}) {
   return (
-    <div>Layout</div>
+    <>
+        <Header />
+        {children}
+    </>
   )
 }
 
