@@ -12,11 +12,14 @@ function CommentsForm({slug}) {
   const handleCommentSubmission = () => {
     setError(false);
     
-    const{ comment } = commentEl.current;
-    const{ name } = commentEl.current;
-    const{ email } = commentEl.current;
+    const{ value: comment } = commentEl.current;
+    const{ value: name } = commentEl.current;
+    const{ value: email } = commentEl.current;
 
-    if(!commentEl.current.value || !nameEl.current.value || !emailEl.current.value)
+    if(!comment|| !name || !email) {
+      setError(true);
+      return;
+    }
   }
 
   return (
