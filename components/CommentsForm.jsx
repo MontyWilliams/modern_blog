@@ -10,6 +10,11 @@ function CommentsForm({slug}) {
   const emailEl = useRef();
   const storeDataEl = useRef();
 
+  useEffect(() => {
+    nameEl.current.value = window.localStorage.getItem('name')
+    emailEl.current.value = window.localStorage.getItem('email');
+  },  [] ) ;
+  
   const handleCommentSubmission = () => {
     setError(false);
     
@@ -46,7 +51,7 @@ function CommentsForm({slug}) {
 
   return (
     <div className='rounded-lg p-8 pb-12 mb-8 bg-white shadow-lg'>
-      <h1 className='text-xl mb-8 font-semibold border-b pb-4'>Comments Form</h1>
+      <h1 className='text-xl mb-8 font-semibold border-b pb-4'>Leave A Reply</h1>
       <div className="grid grid-cols-1 gap-4 mb-4">
         <textarea
         ref={commentEl}
@@ -63,7 +68,7 @@ function CommentsForm({slug}) {
           name="name"
           />
       <input
-          type="text" ref={nameEl}
+          type="text" ref={emailEl}
           className="py-2 outline-none w-full rounded-lg focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-700"
           placeholder='Email'
           name="email"
