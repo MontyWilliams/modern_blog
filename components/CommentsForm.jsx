@@ -1,9 +1,10 @@
 import React, {useState, useEffect, useRef} from 'react'
+import { submitComment } from '../services'
 
 function CommentsForm({slug}) {
   const [error, setError] = useState(false);
   const [localStorage, setLocalStorage] = useState(null);
-  const [showSuccessMessage, setsSowSuccessMessage] = useState(false);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const commentEl = useRef();
   const nameEl = useRef();
   const emailEl = useRef();
@@ -32,6 +33,15 @@ function CommentsForm({slug}) {
       localStorage.removeItem('name', name);
       localStorage.removeItem('email', email);
     }
+
+    submitComment(commentObj)
+      .then((res) => {
+        setShowSuccessMessage(true);
+
+        setTimeout(() => {
+          setShowSuccessMessage(false);
+        }, 3000);
+      })
   }
 
   return (
