@@ -13,12 +13,24 @@ function CommentsForm({slug}) {
     setError(false);
     
     const{ value: comment } = commentEl.current;
-    const{ value: name } = commentEl.current;
-    const{ value: email } = commentEl.current;
+    const{ value: name } = nameEl.current;
+    const{ value: email } = emailEl.current;
+    const{ checked: storeData } = storeDataEl.current;
 
-    if(!comment|| !name || !email) {
+
+    if(!comment|| !name || !storeData) {
       setError(true);
       return;
+    }
+
+    const commentObj = {name, email, comment, slug};
+
+    if(storeData) {
+      localStorage.setItem('name', name);
+      localStorage.setItem('email', email);
+    } else {
+      localStorage.removeItem('name', name);
+      localStorage.removeItem('email', email);
     }
   }
 
@@ -46,6 +58,18 @@ function CommentsForm({slug}) {
           placeholder='Email'
           name="email"
           />
+      </div>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4 ">
+        <div className="">
+          <input
+            type="checkbox"
+            ref={storeDataEl}
+            id="storeData"
+            name="storeData"
+            value="true"
+            />
+            <label htmlFor="storeData" className='text-gray-500 cursor-pointer ml-2'>Save info</label>
+        </div>
       </div>
      {error && <p className='text-xs text-red-500'>Fill all fields!</p>}
      <div className="mt-8">
