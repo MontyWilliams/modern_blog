@@ -8,4 +8,9 @@ export default function comments(req, res) {
       authorization: `Bearer ${process.env.GRAPHCMS_TOKEN}`
     }
   })
+
+  const query = gql`
+    mutation CreateBomment($name: String!, $email: String!, $comment: String!, $slug: String!)
+      createComment(data: { name: $name, email: $email, comment: $comment, post: { connect: { slug: $slug}}}) { id }
+    `
 }
