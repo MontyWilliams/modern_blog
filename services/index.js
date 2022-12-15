@@ -126,3 +126,10 @@ export const getCategories = async () => {
   return result.categories;
 };
 
+export const submitComment = async (obj) => {   //next js alpi is queried for comments
+  const result = await fetch('/api/comments', {
+    method: 'POST',
+    BODY: JSON.stringify(obj),
+  });
+  return result.json();
+}
