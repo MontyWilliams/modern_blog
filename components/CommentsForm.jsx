@@ -24,23 +24,26 @@ function CommentsForm({slug}) {
     const{ checked: storeData } = storeDataEl.current;
 
 
-    if(!comment|| !name || !storeData) {
+    if(!comment|| !name || !email) {
       setError(true);
       return;
     }
 
     const commentObj = {name, email, comment, slug};
+    // console.log(commentObj)
 
     if(storeData) {
-      localStorage.setItem('name', name);
-      localStorage.setItem('email', email);
+      window.localStorage.setItem('name', name);
+      window.localStorage.setItem('email', email);
     } else {
-      localStorage.removeItem('name', name);
-      localStorage.removeItem('email', email);
+      window.localStorage.removeItem('name', name);
+      window.localStorage.removeItem('email', email);
     }
 
     submitComment(commentObj)
       .then((res) => {
+    console.log(commentObj)
+
         setShowSuccessMessage(true);
 
         setTimeout(() => {
@@ -95,7 +98,7 @@ function CommentsForm({slug}) {
         >
       Post Comment
       </button>
-      {showSuccessMessage && <span>Comment submitted for review</span>}
+      {showSuccessMessage && <span className="text-xl float-right font-semibold mt-3 text-green-500">Comment submitted for review</span>}
      </div>
      
     </div>
