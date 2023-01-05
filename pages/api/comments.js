@@ -1,20 +1,25 @@
-import { GraphQLClient, gql } from 'graphql';
+import { GraphQLClient, gql } from 'graphql-request';
 
 const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT;
 
 export default async function comments(req, res) {
-
+  console.log({graphqlAPI})
   const graphQLClient = new GraphQLClient(graphqlAPI, {
     headers: {
-      authorization: `Bearer ${process.env.GRAPHCMS_TOKEN}`
+      authorization: `Bearer ${process.env.GRAPHCMS_TOKEN}`,
     }
   })
 
   const query = gql`
-    mutation CreateComment($name: String!, $email: String!, $comment: String!, $slug: String!){
+    mutation CreateComment($name: String!, $email: String!, $comment: String!, $slug: String!) {
       createComment(data: { name: $name, email: $email, comment: $comment, post: { connect: { slug: $slug}}}) { id }
     }
-  `
-  const result = await graphQLClient.request(query, req.body)
+  `;
+
+  try {
+  const result = await graphQLClient.request(query, req.body);
   return res.status(200).send(result)
+  } catch (error) {
+    console.log(error);
+  }
 }

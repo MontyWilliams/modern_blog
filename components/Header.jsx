@@ -18,7 +18,7 @@ function Header() {
         <div className="md:float-left block">
           <Link rel="stylesheet" href="/" >
             <span className="cursor-pointer font-bold text-4xl text-white">
-              GraphCMS
+              918-DCX
             </span>
           </Link>
         </div>

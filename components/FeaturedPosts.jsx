@@ -34,7 +34,7 @@ function FeaturedPosts() {
     console.log(featured)
   return (
     <div className="mb-8">
-        <Carousel infinite responsive={responsive}>
+        <Carousel infinite responsive={responsive} itemClass="px-4">
             {featured.map((post, index) => (
                 <FeaturedPostsCard key={index} post={post} />
             ))}

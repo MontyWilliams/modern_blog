@@ -3,6 +3,7 @@ import { Layout } from '../components'
 import '../styles/globals.scss'
 import 'tailwindcss/tailwind.css'
 
+
 function MyApp({ Component, pageProps }) {
   return (
     <Layout>
