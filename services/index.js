@@ -19,7 +19,7 @@ export const getPosts = async () => {
                       createdAt
                       slug
                       title
-                      excrpt
+                      excerpt
                       featuredImage {
                         url
                       }
@@ -53,7 +53,7 @@ export const getPostDetails = async (slug) => {
           createdAt
           slug
           title
-          excrpt
+          excerpt
           featuredImage {
             url
           }
@@ -129,7 +129,24 @@ export const getCategories = async () => {
 export const submitComment = async (obj) => {   //next js alpi is queried for comments
   const result = await fetch('/api/comments', {
     method: 'POST',
-    BODY: JSON.stringify(obj),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(obj),
   });
   return result.json();
-}
+};
+
+export const getComments = async (slug) => {
+  const query = gql`
+    query GetComments($slug: String!) {
+      Comments(where: {post {slug: $slug}}) {
+        name
+        createdAt
+        comment
+      }
+    }
+  `
+  const result = await request(graphqlAPI, query, {slug});
+  return result.comments;
+};
