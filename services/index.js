@@ -140,7 +140,7 @@ export const submitComment = async (obj) => {   //next js alpi is queried for co
 export const getComments = async (slug) => {
   const query = gql`
     query GetComments($slug: String!) {
-      Comments(where: {post: {slug: $slug}}) {
+      comments(where: {post: {slug: $slug}}) {
         name
         createdAt
         comment
