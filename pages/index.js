@@ -1,7 +1,7 @@
 import { getPosts } from '../services';
 import Head from 'next/head'
 import Image from 'next/image'
-import { PostCard, Categories, PostWidget, FeaturedPosts } from '../components/index.js'
+import { PostCard, Categories, PostWidget, FeaturedPosts, Footer } from '../components/index.js'
 
 const Home = ({posts}) => {
 
@@ -25,6 +25,7 @@ const Home = ({posts}) => {
             </div>
           </div>
       </div>
+      <Footer />
     </div>
   )
 }
