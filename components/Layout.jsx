@@ -1,11 +1,18 @@
 import React from 'react'
 import { Header } from './';
+import { Footer } from './';
+
 
 function Layout({children}) {
   return (
-    <div className="bg-Tulsa1 bg-cover">
+    <div>
+      <div>
         <Header />
         {children}
+      </div>
+      <div className=" bottom-0 w-full">
+        <Footer />
+      </div>
     </div>
   )
 }

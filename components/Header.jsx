@@ -18,7 +18,7 @@ function Header() {
 
 
   return (
-    <div className="container mx-auto px-10 mb-8 bg-tulsa">
+    <div className="container mx-auto px-10 mb-8 bg-tulsa bg-no-repeat bg-cover">
       <div className="border-b w-full inline-block border-blue-400 py-8">
         <div className="md:float-left block">
           <Link rel="stylesheet" href="/" >
@@ -38,9 +38,6 @@ function Header() {
                     </span>
                   </Link>
                 ))}
-                <button>
-                  <img src="./close_btn.png" alt="" />
-                </button>
               </div>
             )}
            </div>

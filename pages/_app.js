@@ -6,9 +6,11 @@ import 'tailwindcss/tailwind.css'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Layout className="bg-tulsa" >
+    <div>
+    <Layout>
       <Component {...pageProps} />
     </Layout>
+    </div>
   )
 }
 
